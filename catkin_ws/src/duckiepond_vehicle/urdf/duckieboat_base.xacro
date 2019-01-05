@@ -27,7 +27,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh scale="0.001 0.001 0.001"
-          filename="package://wamv_description/mesh/DUCKIEBOAT-Base.stl" />
+          filename="package://duckiepond_vehicle/mesh/DUCKIEBOAT-Base.stl" />
       </geometry>
     </visual>
     <collision>
@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh scale="0.001 0.001 0.001"
-          filename="package://wamv_description/mesh/DUCKIEBOAT-Base.stl" />
+          filename="package://duckiepond_vehicle/mesh/DUCKIEBOAT-Base.stl" />
       </geometry>
     </collision>
   </link>
@@ -45,12 +45,12 @@
   <link name="right_motor">
     <visual>
      <geometry>
-       <mesh filename="package://wamv_description/mesh/PROPELLER.dae"/>
+       <mesh filename="package://duckiepond_vehicle/mesh/PROPELLER.dae"/>
      </geometry>
     </visual>
     <collision name="right_motor_collision">
       <geometry>
-        <mesh filename="package://wamv_description/mesh/PROPELLER.dae"/>
+        <mesh filename="package://duckiepond_vehicle/mesh/PROPELLER.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -82,12 +82,12 @@
   <link name="left_motor">
     <visual>
      <geometry>
-       <mesh filename="package://wamv_description/mesh/PROPELLER.dae"/>
+       <mesh filename="package://duckiepond_vehicle/mesh/PROPELLER.dae"/>
      </geometry>
     </visual>
     <collision name="left_motor_collision">
       <geometry>
-        <mesh filename="package://wamv_description/mesh/PROPELLER.dae"/>
+        <mesh filename="package://duckiepond_vehicle/mesh/PROPELLER.dae"/>
       </geometry>
     </collision>
     <inertial>

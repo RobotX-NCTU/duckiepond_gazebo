@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="wamv_gps" params="*origin name longitude:=-157.8901 latitude:=21.30996 altitude:=1.5">
+  <xacro:macro name="usv_gps" params="*origin name longitude:=-157.8901 latitude:=21.30996 altitude:=1.5 robot_name:=boat">
 
     <link name="${name}">
       <visual>
         <geometry>
-          <box size="0.2 1.4 0.2" />
+          <box size="0.2 0.5 0.2" />
         </geometry>
       </visual>
     </link>
@@ -15,12 +15,12 @@
       <child link="${name}"/>
     </joint>
     <gazebo>
-      <plugin name="gps_plugin_${name}" filename="libhector_gazebo_ros_gps.so">
+      <plugin name="gps_plugin_${robot_name}" filename="libhector_gazebo_ros_gps.so">
 		<updateRate>5.0</updateRate>
 		<alwaysOn>true</alwaysOn>
 	        <bodyName>base_link</bodyName>
 	        <frameId>gps</frameId>
-		<topicName>gps</topicName>
+		<topicName>${robot_name}/gps</topicName>
     	<velocityTopicName>fix_velocity</velocityTopicName>
 
 		<!-- Location of origin of Gazebo Sand Island map -->

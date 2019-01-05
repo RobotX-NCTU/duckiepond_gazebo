@@ -33,7 +33,7 @@ along with this package.  If not, see <http://www.gnu.org/licenses/>.
 //#include <gazebo_plugins/gazebo_ros_utils.h>
 
 //ROS
-#include <duckiepond_gazebo/UsvDrive.h>
+#include <duckiepond_vehicle/UsvDrive.h>
 #include <ros/ros.h>
 
 // Custom Callback Queue
@@ -58,7 +58,7 @@ namespace gazebo
       Callback for Drive commands
       \param msg usv_msgs UsvDrive message
     */
-    void OnCmdDrive( const duckiepond_gazebo::UsvDriveConstPtr &msg);
+    void OnCmdDrive( const duckiepond_vehicle::UsvDriveConstPtr &msg);
 
     /*! ROS spin once */
     void spin();
@@ -67,7 +67,7 @@ namespace gazebo
 
      */
     double getSdfParamDouble(sdf::ElementPtr sdfPtr,const std::string &param_name,double default_val);
-
+    std::string getSdfParamString(sdf::ElementPtr sdfPtr,const std::string &param_name,std::string default_val);
     /*! Takes ROS Kingfisher Drive commands and scales them by max thrust
 
       \param cmd ROS drive command
@@ -129,6 +129,8 @@ namespace gazebo
     double param_thrust_z_offset_;
     // Pointer to the update event connection
     event::ConnectionPtr updateConnection;
+    //Cmd drive topic name
+    std::string param_topic_name;
   };  // class UsvThrust
 } // namespace gazebo
 

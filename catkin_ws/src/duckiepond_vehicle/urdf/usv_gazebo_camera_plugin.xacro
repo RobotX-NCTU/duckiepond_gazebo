@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="duckieboat_camera" params="name robot_name:=/ ">
+  <xacro:macro name="usv_camera" params="name robot_name:=duckieboat">
        
   <!-- camera position -->
   <xacro:property name="origin_mid">
@@ -45,7 +45,7 @@
           <stddev>0.007</stddev>
         </noise>
       </camera>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <plugin name="${name}_camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
         <cameraName>${robot_name}/zed_mid/rgb</cameraName>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="usv_thrust_gazebo" params="name">
+  <xacro:macro name="usv_thrust_gazebo" params="name robot_name:=boat">
     <!--Gazebo Plugin for simulating WAM-V dynamics-->
     <gazebo >
-      <plugin name="usv_thrust_${name}" filename="libusv_gazebo_thrust_plugin.so">
+      <plugin name="usv_thrust_${robot_name}" filename="libusv_gazebo_thrust_plugin.so">
 	<bodyName>base_link</bodyName>
 
 	<!-- Which thruster curve to use -->
@@ -19,6 +19,7 @@
 	<maxForceFwd>250.0</maxForceFwd>
 	<maxForceRev>-100.0</maxForceRev>
 	<cmdTimeout>1.0</cmdTimeout>
+	<topicName>${robot_name}/cmd_drive</topicName>
 	
       </plugin>
       </gazebo>

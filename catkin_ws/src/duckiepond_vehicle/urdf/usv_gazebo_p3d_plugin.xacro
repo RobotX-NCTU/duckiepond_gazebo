@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="usv_p3d" params="name">
+  <xacro:macro name="usv_p3d" params="name robot_name:=boat">
     <gazebo>
-      <plugin name="usv_p3d_${name}" filename="libgazebo_ros_p3d.so">
+      <plugin name="usv_p3d_${robot_name}" filename="libgazebo_ros_p3d.so">
 		<bodyName>base_link</bodyName>
-		<frameName>odom</frameName>
+		<frameName>map</frameName>
 		<updateRate>10.0</updateRate>
-		<topicName>p3d_odom</topicName>
+		<topicName>${robot_name}/p3d_odom</topicName>
 		<xyzOffset>0 0 0</xyzOffset>
 		<rpyOffset>0 0 0</rpyOffset>
 		<gaussianNoise>0</gaussianNoise>

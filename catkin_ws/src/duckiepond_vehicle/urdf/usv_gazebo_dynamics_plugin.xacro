@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="usv_dynamics_gazebo" params="name">
+  <xacro:macro name="usv_dynamics_gazebo" params="name robot_name:=boat">
     <!--Gazebo Plugin for simulating WAM-V dynamics-->
     <gazebo >
-      <plugin name="usv_dynamics_${name}" filename="libusv_gazebo_dynamics_plugin.so">
+      <plugin name="usv_dynamics_${robot_name}" filename="libusv_gazebo_dynamics_plugin.so">
 	<bodyName>base_link</bodyName>
 	<waterLevel>0</waterLevel> <!-- Must be same as the ocean model!-->
 	<waterDensity>997.8</waterDensity>

@@ -2,6 +2,7 @@
 
 <launch>
   <arg name="world" default="duckiepond.world" />
+  <arg name="robot_name" default="duckieboat1" />
 
   <!-- Start Gazebo with the world file -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -13,7 +14,7 @@
 
   <!-- Load robot model -->
   <arg name="urdf" default="$(find duckiepond_vehicle)/urdf/duckieboat.xacro"/>
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf)"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name)" />
 
   <!-- Spawn model in Gazebo -->
   <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"

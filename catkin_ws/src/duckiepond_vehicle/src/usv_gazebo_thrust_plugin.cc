@@ -58,7 +58,20 @@ double UsvThrust::getSdfParamDouble(sdf::ElementPtr sdfPtr, const std::string &p
   }
   return val;
 }
+std::string UsvThrust::getSdfParamString(sdf::ElementPtr sdfPtr, const std::string &param_name, std::string default_val)
+{
+  std::string val = default_val;
+  if (sdfPtr->HasElement(param_name) && sdfPtr->GetElement(param_name)->GetValue())
+  {
+    val = sdfPtr->GetElement(param_name)->Get<std::string>();
+    ROS_INFO_STREAM("Parameter found - setting <" << param_name << "> to <" << val << ">.");
 
+  }
+  else{
+    ROS_INFO_STREAM("Parameter <" << param_name << "> not found: Using default value of <" << val << ">.");
+  }
+  return val;
+}
 void UsvThrust::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf )
 {
   ROS_INFO("Loading usv_gazebo_thrust_plugin");
@@ -137,6 +150,7 @@ void UsvThrust::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf )
   param_boat_length_ = getSdfParamDouble(_sdf,"boatLength",param_boat_length_);
   param_thrust_z_offset_ = getSdfParamDouble(_sdf,"thrustOffsetZ",
 					 param_thrust_z_offset_);
+  param_topic_name = getSdfParamString(_sdf, "topicName", "boat");
 
   //initialize time and odometry position
   prev_update_time_ = last_cmd_drive_time_ = this->world_->GetSimTime();
@@ -148,7 +162,7 @@ void UsvThrust::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf )
 	    ros::init_options::NoSigintHandler|ros::init_options::AnonymousName);
   rosnode_ = new ros::NodeHandle( node_namespace_ );
 
-  cmd_drive_sub_ = rosnode_->subscribe("cmd_drive", 1, &UsvThrust::OnCmdDrive, this );
+  cmd_drive_sub_ = rosnode_->subscribe(param_topic_name, 1, &UsvThrust::OnCmdDrive, this );
 
   // Listen to the update event. This event is broadcast every
   // simulation iteration.
@@ -255,7 +269,7 @@ void UsvThrust::UpdateChild()
   link_->AddForceAtRelativePosition(inputforce3,relpos);
 }
 
-void UsvThrust::OnCmdDrive( const duckiepond_gazebo::UsvDriveConstPtr &msg)
+void UsvThrust::OnCmdDrive( const duckiepond_vehicle::UsvDriveConstPtr &msg)
 {
     last_cmd_drive_time_ = this->world_->GetSimTime();
     last_cmd_drive_left_ = msg->left;
