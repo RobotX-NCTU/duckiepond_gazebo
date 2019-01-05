@@ -11,4 +11,13 @@
     <arg name="use_sim_time" value="true"/>
   </include>
 
+  <!-- Load robot model -->
+  <arg name="urdf" default="$(find duckiepond_vehicle)/urdf/duckieboat.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf)"/>
+
+  <!-- Spawn model in Gazebo -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+	args="-x 0 -y 0 -z 0.1 -R 0 -P 0 -Y 0
+	      -urdf -param robot_description -model duckieboat_1"/>
+
 </launch>

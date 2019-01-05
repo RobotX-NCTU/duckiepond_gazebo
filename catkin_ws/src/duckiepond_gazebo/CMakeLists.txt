@@ -34,6 +34,22 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS} -std=c++11 -Wall -Wextra")
 
+# Generate messages in the 'msg' folder
+add_message_files(
+  FILES
+  UsvDrive.msg
+)
+
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  geometry_msgs
+  sensor_msgs
+  nav_msgs
+  std_msgs
+)
+
+
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS roscpp message_runtime std_msgs geometry_msgs nav_msgs sensor_msgs
@@ -65,6 +81,36 @@ target_link_libraries(buoyancy_gazebo_plugin
   ${Eigen_LIBRARIES}
 )
 install(TARGETS buoyancy_gazebo_plugin
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+## Declare a C++ library
+add_library(usv_gazebo_dynamics_plugin
+  src/usv_gazebo_dynamics_plugin.cc
+)
+target_link_libraries(usv_gazebo_dynamics_plugin
+  ${catkin_LIBRARIES}
+  ${GAZEBO_LIBRARIES}
+  ${Eigen_LIBRARIES}
+)
+install(TARGETS usv_gazebo_dynamics_plugin
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+## Declare a C++ library
+add_library(usv_gazebo_thrust_plugin
+  src/usv_gazebo_thrust_plugin.cc
+)
+target_link_libraries(usv_gazebo_thrust_plugin
+  ${catkin_LIBRARIES}
+  ${GAZEBO_LIBRARIES}
+  ${Eigen_LIBRARIES}
+)
+install(TARGETS usv_gazebo_thrust_plugin
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
