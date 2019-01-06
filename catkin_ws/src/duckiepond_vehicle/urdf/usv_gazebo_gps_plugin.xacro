@@ -16,11 +16,11 @@
     </joint>
     <gazebo>
       <plugin name="gps_plugin_${robot_name}" filename="libhector_gazebo_ros_gps.so">
-		<updateRate>5.0</updateRate>
+		<updateRate>15.0</updateRate>
 		<alwaysOn>true</alwaysOn>
 	        <bodyName>base_link</bodyName>
 	        <frameId>gps</frameId>
-		<topicName>${robot_name}/gps</topicName>
+		<topicName>${robot_name}/fix</topicName>
     	<velocityTopicName>fix_velocity</velocityTopicName>
 
 		<!-- Location of origin of Gazebo Sand Island map -->

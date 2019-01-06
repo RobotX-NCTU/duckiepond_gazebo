@@ -27,6 +27,8 @@
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_thrust_plugin.xacro"/>
     <xacro:usv_thrust_gazebo name="thrust" robot_name="$(arg robot_name)"/>
 
-
+    <!-- Attach camera plugin -->
+    <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_camera_plugin.xacro"/>
+    <xacro:usv_camera name="camera" robot_name="$(arg robot_name)"/>
 
 </robot>
