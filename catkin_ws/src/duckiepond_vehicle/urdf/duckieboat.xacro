@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="duckieboat">
     <!-- Defines the base vehicle -->
-    <xacro:include filename="$(find duckiepond_vehicle)/urdf/duckieboat_base.xacro" />
+    <xacro:include filename="$(find duckiepond_vehicle)/urdf/duckieboat_base.xacro"/>
 
     <!-- Attach IMU plugin -->  
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_imu_plugin.xacro" />
@@ -20,11 +20,11 @@
     </xacro:usv_gps>
 
     <!-- Attach hydrodynamics plugin -->
-    <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_dynamics_plugin.xacro" robot_name="$(arg robot_name)"/>
+    <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_dynamics_plugin.xacro"/>
     <xacro:usv_dynamics_gazebo name="dynamics" robot_name="$(arg robot_name)"/>
 
     <!-- Attach thrust plugin -->
-    <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_thrust_plugin.xacro" robot_name="$(arg robot_name)"/>
+    <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_thrust_plugin.xacro"/>
     <xacro:usv_thrust_gazebo name="thrust" robot_name="$(arg robot_name)"/>
 
 
