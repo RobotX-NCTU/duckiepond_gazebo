@@ -6,7 +6,7 @@
     <!-- Attach IMU plugin -->  
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_imu_plugin.xacro" />
     <xacro:usv_imu name="imu" robot_name="$(arg robot_name)">
-        <origin xyz="0.2 0.0 0.5" rpy="0 0 0" />
+        <origin xyz="0.5 0.0 0.5" rpy="0 0 0" />
     </xacro:usv_imu>
 
     <!-- Attach p3d odometry plugin -->
@@ -16,7 +16,7 @@
     <!-- Attach GPS plugin -->    
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_gps_plugin.xacro" />
     <xacro:usv_gps name="gps" latitude="24.788808" longitude="121.000188" altitude="2.5" robot_name="$(arg robot_name)">
-        <origin xyz="0.2 0.0 0.8" rpy="0 0 0" />
+        <origin xyz="0.5 0.0 0.8" rpy="0 0 0" />
     </xacro:usv_gps>
 
     <!-- Attach hydrodynamics plugin -->

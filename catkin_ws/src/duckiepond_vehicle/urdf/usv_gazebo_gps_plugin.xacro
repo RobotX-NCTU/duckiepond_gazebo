@@ -5,7 +5,7 @@
     <link name="${name}">
       <visual>
         <geometry>
-          <box size="0.2 0.5 0.2" />
+          <box size="0.1 0.3 0.1" />
         </geometry>
       </visual>
     </link>
