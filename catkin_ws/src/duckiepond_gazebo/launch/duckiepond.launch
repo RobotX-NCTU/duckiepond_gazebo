@@ -2,8 +2,8 @@
 
 <launch>
   <arg name="world" default="duckiepond.world" />
-  <arg name="robot_name_1" default="duckieboat1" />
-  <arg name="robot_name_2" default="duckieboat2" />
+  <arg name="robot_name_1" default="monica" />
+  <arg name="robot_name_2" default="brian" />
 
   <!-- Start Gazebo with the world file -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -21,11 +21,11 @@
   <!-- Spawn model in Gazebo -->
   <node name="spawn_model_1" pkg="gazebo_ros" type="spawn_model"
 	args="-x 0 -y 0 -z 0.1 -R 0 -P 0 -Y 0
-	      -urdf -param robot_description_1 -model duckieboat_1"/>
+	      -urdf -param robot_description_1 -model monica"/>
 
   <node name="spawn_model_2" pkg="gazebo_ros" type="spawn_model"
 	args="-x 3 -y 3 -z 0.1 -R 0 -P 0 -Y 0
-	      -urdf -param robot_description_2 -model duckieboat_2"/>
+	      -urdf -param robot_description_2 -model brian"/>
 
 
 </launch>
