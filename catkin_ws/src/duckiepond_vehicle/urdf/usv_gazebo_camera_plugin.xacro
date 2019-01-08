@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="usv_camera" params="name robot_name:=duckieboat camera_z:=0.45 camera_row:=1.57">
+  <xacro:macro name="usv_camera" params="name robot_name:=duckieboat camera_z:=0.45 camera_pitch:=0">
        
   <!-- camera position -->
   <xacro:property name="origin_mid">
-    <origin xyz="1 0 ${camera_z}" rpy="0 0 0" />
+    <origin xyz="1 0 ${camera_z}" rpy="0 ${camera_pitch} 0" />
   </xacro:property>
 
   <!-- mid camera -->
   <link name="camera_link">    
     <visual>
-      <origin xyz="-0.01 0 0" rpy="${camera_row} 0 1.57"/>
+      <origin xyz="-0.01 0 0" rpy="0 ${camera_pitch} 1.57"/>
       <geometry>
         <mesh filename="model://zed/zed_model.dae" scale="0.02 0.02 0.02"/>  
       </geometry>
