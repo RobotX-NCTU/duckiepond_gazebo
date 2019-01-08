@@ -4,6 +4,24 @@
   <arg name="world" default="duckiepond.world" />
   <arg name="robot_name_1" default="monica" />
   <arg name="robot_name_2" default="brian" />
+  <arg name="watchtower_name" default="watchtower" />
+
+  <!-- Initial apriltag base location and attitude-->
+  <arg name="x" default="-5" />
+  <arg name="y" default="5" />
+  <arg name="z" default="0.1" />
+  <arg name="P" default="0" />
+  <arg name="R" default="0" />
+  <arg name="Y" default="0" />
+  <arg name="down_edge" default="0"/>
+  <arg name="left_edge" default="0"/>
+  <arg name="top_edge" default="20"/>
+  <arg name="right_edge" default="20"/>
+  <arg name="wt_camera_z" default="2"/>
+  <arg name="wt_camera_row" default="2.355"/>
+
+  <!-- The switch about sensors and wind -->
+  <arg name="p3d" default="false"/> 
 
   <!-- Start Gazebo with the world file -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -17,15 +35,52 @@
   <arg name="urdf" default="$(find duckiepond_vehicle)/urdf/duckieboat.xacro"/>
   <param name="robot_description_1" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_1)" />
   <param name="robot_description_2" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_2)" />
+  <arg name="urdf_watchtower" default="$(find duckiepond_vehicle)/urdf/watchtower.xacro"/>
+  <param name="robot_description_3" command="$(find xacro)/xacro --inorder $(arg urdf_watchtower) robot_name:=$(arg watchtower_name) camera_z:=$(arg wt_camera_z) camera_row:=$(arg wt_camera_row)" />
+
+  <!-- Load apriltag model -->
+  <!-- down_left -->
+  <arg name="urdf_apriltag_down_left" default="$(find duckiepond_vehicle)/urdf/apriltag.xacro"/>
+  <param name="apriltag_down_left_description" command="$(find xacro)/xacro --inorder $(arg urdf_apriltag_down_left) p3d:=$(arg p3d) robot_name:=apriltag_down_left tag_id:=504 tag_id2:=508 tag_size:=1.0"/>
+  <!-- top_left -->
+  <arg name="urdf_apriltag_top_left" default="$(find duckiepond_vehicle)/urdf/apriltag.xacro"/>
+  <param name="apriltag_top_left_description" command="$(find xacro)/xacro --inorder $(arg urdf_apriltag_top_left) p3d:=$(arg p3d) robot_name:=apriltag_top_left tag_id:=506 tag_id2:=510 tag_size:=1.0"/>
+  <!-- top_right -->
+  <arg name="urdf_apriltag_top_right" default="$(find duckiepond_vehicle)/urdf/apriltag.xacro"/>
+  <param name="apriltag_top_right_description" command="$(find xacro)/xacro --inorder $(arg urdf_apriltag_top_right) p3d:=$(arg p3d) robot_name:=apriltag_top_right tag_id:=507 tag_id2:=511 tag_size:=1.0"/>
+  <!-- down_right -->
+  <arg name="urdf_apriltag_down_right" default="$(find duckiepond_vehicle)/urdf/apriltag.xacro"/>
+  <param name="apriltag_down_right_description" command="$(find xacro)/xacro --inorder $(arg urdf_apriltag_down_right) p3d:=$(arg p3d) robot_name:=apriltag_down_right tag_id:=505 tag_id2:=509 tag_size:=1.0"/>
+
 
   <!-- Spawn model in Gazebo -->
   <node name="spawn_model_1" pkg="gazebo_ros" type="spawn_model"
-	args="-x 0 -y 0 -z 0.1 -R 0 -P 0 -Y 0
+	args="-x 5 -y 7.5 -z 0.1 -R 0 -P 0 -Y 0
 	      -urdf -param robot_description_1 -model monica"/>
 
   <node name="spawn_model_2" pkg="gazebo_ros" type="spawn_model"
-	args="-x 3 -y 3 -z 0.1 -R 0 -P 0 -Y 0
+	args="-x 5 -y 12.5 -z 0.1 -R 0 -P 0 -Y 0
 	      -urdf -param robot_description_2 -model brian"/>
 
+  <node name="spawn_model_3" pkg="gazebo_ros" type="spawn_model"
+  args="-x -5 -y 10 -z 0.1 -R 0 -P 0 -Y 0
+        -urdf -param robot_description_3 -model watchtower"/>
 
+  <!-- Spawn apriltag model in Gazebo -->
+  <node name="spawn_model_apriltag_down_left" pkg="gazebo_ros" type="spawn_model"
+  args="-x $(arg left_edge) -y $(arg down_edge) -z $(arg z)
+        -R $(arg R) -P $(arg P) -Y 1.57079
+        -unpause -urdf -param apriltag_down_left_description -model apriltag_down_left"/>
+  <node name="spawn_model_apriltag_top_left" pkg="gazebo_ros" type="spawn_model"
+  args="-x $(arg left_edge) -y $(arg top_edge) -z $(arg z)
+        -R $(arg R) -P $(arg P) -Y 1.57079
+        -unpause -urdf -param apriltag_top_left_description -model apriltag_top_left"/>
+  <node name="spawn_model_apriltag_top_right" pkg="gazebo_ros" type="spawn_model"
+  args="-x $(arg right_edge) -y $(arg top_edge) -z $(arg z)
+        -R $(arg R) -P $(arg P) -Y 1.57079
+        -unpause -urdf -param apriltag_top_right_description -model apriltag_top_right"/>
+  <node name="spawn_model_apriltag_down_right" pkg="gazebo_ros" type="spawn_model"
+  args="-x $(arg right_edge) -y $(arg down_edge) -z $(arg z)
+        -R $(arg R) -P $(arg P) -Y 1.5707
+        -unpause -urdf -param apriltag_down_right_description -model apriltag_down_right"/>
 </launch>
