@@ -5,8 +5,10 @@
   <arg name="robot_name_1" default="monica" />
   <arg name="robot_name_2" default="brian" />
   <arg name="watchtower_name" default="watchtower" />
-  <arg name="robot_id_1" default="511"/>
-  <arg name="robot_id_2" default="512"/>
+  <arg name="robot_id_1a" default="509"/>
+  <arg name="robot_id_1b" default="510"/>
+  <arg name="robot_id_2a" default="511"/>
+  <arg name="robot_id_2b" default="512"/>
 
   <!-- Initial apriltag base location and attitude-->
   <arg name="x" default="-5" />
@@ -19,7 +21,7 @@
   <arg name="left_edge" default="20.25"/>
   <arg name="top_edge" default="19.75"/>
   <arg name="right_edge" default="0.25"/>
-  <arg name="wt_camera_z" default="10"/>
+  <arg name="wt_camera_z" default="15"/>
   <arg name="wt_camera_pitch" default="0.785"/>
   <arg name="tag_id_dl" default="501"/>
   <arg name="tag_id_dr" default="502"/>
@@ -40,8 +42,8 @@
 
   <!-- Load robot model -->
   <arg name="urdf" default="$(find duckiepond_vehicle)/urdf/duckieboat.xacro"/>
-  <param name="robot_description_1" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_1) robot_id:=$(arg robot_id_1)" />
-  <param name="robot_description_2" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_2) robot_id:=$(arg robot_id_2)" />
+  <param name="robot_description_1" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_1) robot_id:=$(arg robot_id_1a) robot_id2:=$(arg robot_id_1b)" />
+  <param name="robot_description_2" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_2) robot_id:=$(arg robot_id_2a) robot_id2:=$(arg robot_id_2b)" />
   <arg name="urdf_watchtower" default="$(find duckiepond_vehicle)/urdf/watchtower.xacro"/>
   <param name="robot_description_3" command="$(find xacro)/xacro --inorder $(arg urdf_watchtower) robot_name:=$(arg watchtower_name) camera_z:=$(arg wt_camera_z) camera_pitch:=$(arg wt_camera_pitch)" />
 
