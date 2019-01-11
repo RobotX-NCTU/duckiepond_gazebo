@@ -2,8 +2,8 @@
 
 <launch>
   <arg name="world" default="duckiepond.world" />
-  <arg name="robot_name_1" default="monica" />
-  <arg name="robot_name_2" default="brian" />
+  <arg name="robot_name_1" default="duckiepond_1" />
+  <arg name="robot_name_2" default="duckiepond_2" />
   <arg name="watchtower_name" default="watchtower" />
   <arg name="robot_id_1a" default="509"/>
   <arg name="robot_id_1b" default="510"/>
