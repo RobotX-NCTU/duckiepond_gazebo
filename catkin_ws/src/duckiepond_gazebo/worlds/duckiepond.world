@@ -31,13 +31,5 @@
     </include>
 
 
-    <!-- AprilTag -->
-    <include>
-      <pose> 10 -10 0.8 0 0 0 </pose>
-      <name>top_left</name>
-      <uri>model://apriltag</uri>
-      <param>value 2</param>    
-    </include>   
-
   </world>
 </sdf>
