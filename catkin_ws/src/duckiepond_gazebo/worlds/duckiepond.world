@@ -30,6 +30,9 @@
       <uri>model://ocean</uri>      
     </include>
 
-
+    <include>
+      <pose> 100 100 0 0 0 0 </pose>
+      <uri>model://apriltag</uri>      
+    </include>
   </world>
 </sdf>
