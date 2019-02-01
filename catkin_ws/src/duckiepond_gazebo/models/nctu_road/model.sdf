@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="nctu_road">
+    <static>true</static>
+    <link name="walls">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://nctu_road/meshes/con.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://nctu_road/meshes/con.dae</uri>
+          </mesh>
+        </geometry>
+        <cast_shadows>false</cast_shadows>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

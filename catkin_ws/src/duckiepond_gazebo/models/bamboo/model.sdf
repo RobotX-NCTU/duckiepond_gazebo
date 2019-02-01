@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="bamboo">
+    <static>1</static>
+    <link name="link">
+      <static>true</static>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://bamboo/meshes/bamboo.dae</uri>
+          </mesh>         
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <mesh>
+            <uri>model://bamboo/meshes/bamboo.dae</uri>
+          </mesh>         
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

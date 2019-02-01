@@ -4,14 +4,10 @@
   <arg name="world" default="duckiepond.world" />
   <arg name="robot_name_1" default="MONICA" />
   <arg name="robot_name_2" default="BRIAN" />
-  <arg name="watchtower_name" default="watchtower" />
   <arg name="robot_id_1a" default="509"/>
   <arg name="robot_id_1b" default="510"/>
   <arg name="robot_id_2a" default="511"/>
   <arg name="robot_id_2b" default="512"/>
-
-  <!-- The switch about sensors and wind -->
-  <arg name="p3d" default="false"/> 
 
   <!-- Start Gazebo with the world file -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
