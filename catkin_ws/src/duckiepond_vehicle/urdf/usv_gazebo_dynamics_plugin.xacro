@@ -6,7 +6,7 @@
       <plugin name="usv_dynamics_${robot_name}" filename="libusv_gazebo_dynamics_plugin.so">
 	<bodyName>base_link</bodyName>
 	<waterLevel>0</waterLevel> <!-- Must be same as the ocean model!-->
-	<waterDensity>997.8</waterDensity>
+	<waterDensity>443.22</waterDensity>
 	<cmdTimeout>1.0</cmdTimeout>
 	<!-- Added mass -->
 	<xDotU>0.0</xDotU> 
@@ -20,7 +20,7 @@
 	<zW>500.0</zW> 
 	<kP>50.0</kP>
 	<mQ>50.0</mQ>
-	<nR>800.0</nR>
+	<nR>400.0</nR>
 	<nRR>0.0</nRR>
 	<!-- General dimensions -->
 	<boatArea>2.2</boatArea>
