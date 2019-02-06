@@ -26,6 +26,7 @@
   
   <export>
     <!-- Other tools can request additional information be placed here -->
+    <gazebo_ros gazebo_media_path="${prefix}/media"/> 
 
   </export>
 </package>

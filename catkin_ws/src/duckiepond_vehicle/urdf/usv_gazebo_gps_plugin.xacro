@@ -3,11 +3,11 @@
   <xacro:macro name="usv_gps" params="*origin name longitude:=-157.8901 latitude:=21.30996 altitude:=1.5 robot_name:=boat">
 
     <link name="${name}">
-      <visual>
+      <!--visual>
         <geometry>
-          <box size="0.1 0.3 0.1" />
+          <box size="0.01 0.03 0.01" />
         </geometry>
-      </visual>
+      </visual-->
     </link>
     <joint name="${name}_joint" type="fixed">
       <xacro:insert_block name="origin"/>
