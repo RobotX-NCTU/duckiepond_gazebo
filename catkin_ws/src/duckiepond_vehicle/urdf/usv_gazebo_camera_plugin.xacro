@@ -4,13 +4,13 @@
        
   <!-- camera position -->
   <xacro:property name="origin_mid">
-    <origin xyz="0.52 0 ${camera_z}" rpy="0 ${camera_pitch} 0" />
+    <origin xyz="1.0 0 ${camera_z}" rpy="0 ${camera_pitch} 0" />
   </xacro:property>
 
   <!-- mid camera -->
   <link name="camera_link">    
     <!--visual>
-      <origin xyz="-0.01 0 0" rpy="0 ${camera_pitch} 1.57"/>
+      <origin xyz="-0.01 0 0" rpy="0 ${camera_pitch} 0"/>
       <geometry>
         <mesh filename="model://zed/zed_model.dae" scale="0.02 0.02 0.02"/>  
       </geometry>
