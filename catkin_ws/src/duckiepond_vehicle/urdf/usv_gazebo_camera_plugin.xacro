@@ -4,7 +4,7 @@
        
   <!-- camera position -->
   <xacro:property name="origin_mid">
-    <origin xyz="1.0 0 ${camera_z}" rpy="0 ${camera_pitch} 0" />
+    <origin xyz="0.52 0 ${camera_z}" rpy="0 ${camera_pitch} 0" />
   </xacro:property>
 
   <!-- mid camera -->
