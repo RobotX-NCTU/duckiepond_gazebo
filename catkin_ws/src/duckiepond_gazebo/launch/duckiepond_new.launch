@@ -31,6 +31,7 @@
 
   <!-- The switch about sensors and wind -->
   <arg name="p3d" default="false"/> 
+  <arg name="lidar" default="true"/> 
 
   <!-- Start Gazebo with the world file -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -45,7 +46,7 @@
   <param name="robot_description_1" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_1) robot_id:=$(arg robot_id_1a) robot_id2:=$(arg robot_id_1b)" />
   <param name="robot_description_2" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_2) robot_id:=$(arg robot_id_2a) robot_id2:=$(arg robot_id_2b)" />
   <arg name="urdf_watchtower" default="$(find duckiepond_vehicle)/urdf/watchtower.xacro"/>
-  <param name="robot_description_3" command="$(find xacro)/xacro --inorder $(arg urdf_watchtower) robot_name:=$(arg watchtower_name) camera_z:=$(arg wt_camera_z) camera_pitch:=$(arg wt_camera_pitch)" />
+  <param name="robot_description_3" command="$(find xacro)/xacro --inorder $(arg urdf_watchtower) robot_name:=$(arg watchtower_name) camera_z:=$(arg wt_camera_z) camera_pitch:=$(arg wt_camera_pitch) lidar:=$(arg lidar)" />
 
   <!-- Load apriltag model -->
   <!-- down_left -->
@@ -72,7 +73,7 @@
 	      -urdf -param robot_description_2 -model brian"/>
 
   <node name="spawn_model_3" pkg="gazebo_ros" type="spawn_model"
-  args="-x -7.5 -y 10 -z 0.1 -R 0 -P 0 -Y 0
+  args="-x 14.1 -y 6.9 -z 0.1 -R 0 -P 0 -Y 0
         -urdf -param robot_description_3 -model watchtower"/>
 
   <!-- Spawn apriltag model in Gazebo -->

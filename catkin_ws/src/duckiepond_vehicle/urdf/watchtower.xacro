@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="duckieboat">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="watchtower">
     <!-- Defines the base vehicle -->
-    <xacro:include filename="$(find duckiepond_vehicle)/urdf/duckieboat_base.xacro"/>
+    <xacro:include filename="$(find duckiepond_vehicle)/urdf/watchtower_base.xacro"/>
 
     <!-- Attach p3d odometry plugin -->
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_p3d_plugin.xacro" />
@@ -14,6 +14,14 @@
     <!-- Attach thrust plugin -->
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_thrust_plugin.xacro"/>
     <xacro:usv_thrust_gazebo name="thrust" robot_name="$(arg robot_name)"/>
+
+    <!-- Attach LiDAR plugin -->
+    <xacro:if value="$(arg lidar)">
+        <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_lidar_plugin.xacro" />
+        <xacro:usv_HDL32E_lidar parent="base_link" name="velodyne" topic="/$(arg robot_name)/velodyne_points" hz="8" samples="1800" min_range="0" max_range="50.0" min_angle="-3.14" max_angle="3.14" noise="0.01">
+          <origin xyz="0.1 0 0.5" rpy="0 0 -1.57" />
+        </xacro:usv_HDL32E_lidar>
+    </xacro:if>
 
     <!-- Attach camera plugin -->
     <xacro:include filename="$(find duckiepond_vehicle)/urdf/usv_gazebo_camera_plugin.xacro"/>
