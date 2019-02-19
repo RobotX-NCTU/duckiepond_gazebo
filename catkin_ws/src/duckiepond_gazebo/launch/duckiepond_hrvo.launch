@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="world" default="duckiepond.world" />
+  <arg name="robot_name_1" default="boat1" />
+  <arg name="robot_name_2" default="boat2" />
+  <arg name="robot_name_3" default="boat3" />
+  <arg name="robot_name_4" default="boat4" />
+  <arg name="robot_id_1a" default="509"/>
+  <arg name="robot_id_1b" default="510"/>
+  <arg name="robot_id_2a" default="511"/>
+  <arg name="robot_id_2b" default="512"/>
+
+  <!-- The switch about sensors and wind -->
+  <arg name="p3d" default="false"/> 
+  <arg name="lidar" default="false"/> 
+
+  <!-- Start Gazebo with the world file -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find duckiepond_gazebo)/worlds/$(arg world)"/>
+    <arg name="verbose" value="true"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+  </include>
+
+  <!-- Load robot model -->
+  <arg name="urdf" default="$(find duckiepond_vehicle)/urdf/duckieboat_new.xacro"/>
+  <param name="robot_description_1" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_1) robot_id:=$(arg robot_id_1a) robot_id2:=$(arg robot_id_1b)" />
+  <param name="robot_description_2" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_2) robot_id:=$(arg robot_id_2a) robot_id2:=$(arg robot_id_2b)" />
+  <param name="robot_description_3" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_3) robot_id:=$(arg robot_id_1a) robot_id2:=$(arg robot_id_1b)" />
+  <param name="robot_description_4" command="$(find xacro)/xacro --inorder $(arg urdf) robot_name:=$(arg robot_name_4) robot_id:=$(arg robot_id_2a) robot_id2:=$(arg robot_id_2b)" />
+
+
+  <!-- Spawn model in Gazebo -->
+  <node name="spawn_model_1" pkg="gazebo_ros" type="spawn_model"
+	args="-x 7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -1.570
+	      -urdf -param robot_description_1 -model boat1"/>
+
+  <node name="spawn_model_2" pkg="gazebo_ros" type="spawn_model"
+	args="-x 7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 1.570
+	      -urdf -param robot_description_2 -model boat2"/>
+  
+  <node name="spawn_model_3" pkg="gazebo_ros" type="spawn_model"
+	args="-x -7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -0.785
+	      -urdf -param robot_description_3 -model boat3"/>
+
+  <node name="spawn_model_4" pkg="gazebo_ros" type="spawn_model"
+	args="-x -7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 0.785
+	      -urdf -param robot_description_4 -model boat4"/>
+
+</launch>
