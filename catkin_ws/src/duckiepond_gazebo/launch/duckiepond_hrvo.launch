@@ -33,19 +33,19 @@
 
   <!-- Spawn model in Gazebo -->
   <node name="spawn_model_1" pkg="gazebo_ros" type="spawn_model"
-	args="-x 7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -1.570
+	args="-x 7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -2.356
 	      -urdf -param robot_description_1 -model boat1"/>
 
   <node name="spawn_model_2" pkg="gazebo_ros" type="spawn_model"
-	args="-x 7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 1.570
+	args="-x -7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -0.785
 	      -urdf -param robot_description_2 -model boat2"/>
   
   <node name="spawn_model_3" pkg="gazebo_ros" type="spawn_model"
-	args="-x -7.5 -y 7.5 -z 0.0 -R 0 -P 0 -Y -0.785
+	args="-x -7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 0.785
 	      -urdf -param robot_description_3 -model boat3"/>
 
   <node name="spawn_model_4" pkg="gazebo_ros" type="spawn_model"
-	args="-x -7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 0.785
+	args="-x 7.5 -y -7.5 -z 0.0 -R 0 -P 0 -Y 2.356
 	      -urdf -param robot_description_4 -model boat4"/>
 
 </launch>
