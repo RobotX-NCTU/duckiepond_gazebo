@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+  <model name="docking">
+
+    <static>true</static>
+
+    <!-- Row -->
+    <include>
+      <name>dock_block_1</name>
+      <pose>0 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_2</name>
+      <pose>0 0.5 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_3</name>
+      <pose>0 1.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_4</name>
+      <pose>0 1.5 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_5</name>
+      <pose>0 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+
+    <!-- Col -->
+    <include>
+      <name>dock_block_01</name>
+      <pose>0.5 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_02</name>
+      <pose>1 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_03</name>
+      <pose>1.5 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_04</name>
+      <pose>2 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_05</name>
+      <pose>2.5 0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+
+    <!-- Col -->
+    <include>
+      <name>dock_block_51</name>
+      <pose>0.5 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_52</name>
+      <pose>1 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_53</name>
+      <pose>1.5 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_54</name>
+      <pose>2 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+    <include>
+      <name>dock_block_55</name>
+      <pose>2.5 2.0 0.25 0 0 0</pose>
+      <uri>model://dock_block</uri>
+    </include>
+
+  </model>
+</sdf>

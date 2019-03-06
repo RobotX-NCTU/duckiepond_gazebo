@@ -34,5 +34,11 @@
       <pose> 100 100 0 0 0 0 </pose>
       <uri>model://apriltag</uri>      
     </include>
+
+    <include>
+      <pose> 50 15 0 0 0 0 </pose>
+      <uri>model://docking</uri>
+    </include>
+
   </world>
 </sdf>
